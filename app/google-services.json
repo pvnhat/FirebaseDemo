@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "946649962472",
+    "firebase_url": "https://chatapp-firebasedemo.firebaseio.com",
+    "project_id": "chatapp-firebasedemo",
+    "storage_bucket": "chatapp-firebasedemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946649962472:android:dd6c2996af46e22b",
+        "android_client_info": {
+          "package_name": "com.example.firebasedemo_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946649962472-k1mr9jk6mjmushdhuh4h195876kmcjr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasedemo_chat",
+            "certificate_hash": "2f233e6493d95689537408a80d8cae3a2e045c64"
+          }
+        },
+        {
+          "client_id": "946649962472-rvnfq99tu7uvucav40rqu6oroi0g7dco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnsu11kgGFGIARhFSVBfPM_P-Y-7qytCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946649962472-rvnfq99tu7uvucav40rqu6oroi0g7dco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

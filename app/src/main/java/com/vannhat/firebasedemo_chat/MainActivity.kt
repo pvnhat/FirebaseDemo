@@ -1,9 +1,13 @@
 package com.vannhat.firebasedemo_chat
 
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        handleEvent()
         btn_storage.setOnClickListener {
             startActivity(Intent(this, CloudStorageDemo::class.java))
         }
@@ -26,6 +31,18 @@ class MainActivity : AppCompatActivity() {
             updateElementInArray()
         }
 
+    }
+
+    private fun handleEvent() {
+        val intentData = intent.getStringExtra(USER_INFO)
+        tv_user_info.text = intentData
+        Glide.with(this).load(intent.getStringExtra(AVATAR_URL)).into(iv_avatar)
+        btn_logout.setOnClickListener {
+            AuthUI.getInstance().signOut(this).addOnCompleteListener {
+                createToast(this, "Logout is successful !!!")
+                onBackPressed()
+            }
+        }
     }
 
     // ===================== Create,update,delete Data ====================
@@ -339,5 +356,18 @@ class MainActivity : AppCompatActivity() {
         // ...
         // Stop listener
         registration.remove()
+    }
+
+    companion object {
+        private const val USER_INFO = "USER_INFO"
+        private const val AVATAR_URL = "AVATAR_URL"
+
+        fun newInstance(context: Context, userInfo: String? = null,
+            avatarUrl: String? = null): Intent {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.putExtra(USER_INFO, userInfo)
+            intent.putExtra(AVATAR_URL, avatarUrl)
+            return intent
+        }
     }
 }

@@ -25,12 +25,15 @@ fun isPermissionGranted(activity: AppCompatActivity): Boolean {
     return ContextCompat.checkSelfPermission(activity,
         Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
         ContextCompat.checkSelfPermission(activity,
-            Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+            Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
 }
+
 
 fun requestPermissionW(activity: AppCompatActivity) {
     if (ActivityCompat.shouldShowRequestPermissionRationale(activity,
-            Manifest.permission.READ_CONTACTS)) {
+            Manifest.permission.READ_EXTERNAL_STORAGE) || ActivityCompat.shouldShowRequestPermissionRationale(
+            activity,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
         createLog("explain permission")
     } else {
         ActivityCompat.requestPermissions(activity,
